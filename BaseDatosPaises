@@ -1,0 +1,10 @@
+ContinenteDelPais,NombrePais,Capital,Presidente,Poblacion,Superficie,DensidadPoblacional,Idioma
+ASIA,Japon,Tokyo,Nahurati,190,210,0.904762,japones
+ASIA,China,Beijing,Xi Jinping,1000,1200,0.833333,Mandarin
+ASIA,Tailandia,Bangkok,Luan,1002,209,4.794259,tailandes
+EUROPA,Francia,Paris,Macron,245,679,0.360825,frances
+EUROPA,Inglaterra,Londres,Carlos,9500,1456,6.524725,ingles
+EUROPA,Ucrania,Kiev,Zelenski,2800,1234,2.269044,ucraniano
+ASIA,Corea,Seul,shi,1284,2012,0.638171,coreano
+OCEANIA,Australia,Sidney,George,12945,2323,5.572536,ingles
+OCEANIA,Nueva Zelanda,Wellington,Jacinda,2300,1000,2.300000,maori
