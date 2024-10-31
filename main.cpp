@@ -1,5 +1,5 @@
 #include <iostream>
-#include <locale.h> // bibloteca que proporciona funciones para manejar informacion relacionada con la configuracion regional de un programa (representación de datos) 
+#include <locale.h> // bibloteca que proporciona funciones para manejar informacion relacionada con la configuracion regional de un programa (representacion de datos) 
 #include <string> // bibloteca para trabajar con cadenas de caracteres
 #include <cstdlib> // bibloteca que proporciona funciones para la gestion de memoria dinamica, generacion de numeros aleatorios, etc. Incluye system()
 #include <vector> 
@@ -28,18 +28,18 @@ void llenarVectorPaises();
 //Funciones para verificar existencia
 void verificarExistenciaBaseDatos(); //Verfiicar la existencia de las bases de datos y crea los ficheros en caso de que no existan
 void existenciaContinente(string nomContinente);  //Verifica si existe el continente
-void existenciaPais(string nomDelPais); // Verifica si existe el país
+void existenciaPais(string nomDelPais); // Verifica si existe el pais
 
 //Funciones para actualizar y registrar en los ficheros
-void actualizarBaseDatosTodosDatosContinente();  //Función para actualizar los datos de un continente una vez se registra un país dentro de dicho continente
+void actualizarBaseDatosTodosDatosContinente();  //Funcion para actualizar los datos de un continente una vez se registra un pais dentro de dicho continente
 
-void actualizarBaseDatosUnDatoPais(int columna, string datoPais); // Funcion para actualizar un solo dato del país, recibe un parametro correspondiente a la columna y otro al dato que se quiere eliminar
-void actualizarBaseDatosNombreContinente(); // Actualiza el fichero de países y continentes, ya que cambia el nombre del Continente
-void actualizarBaseDatosTodosDatosPais(); //Funcion cuando el usuario desee cambiar todos los datos de un país
+void actualizarBaseDatosUnDatoPais(int columna, string datoPais); // Funcion para actualizar un solo dato del pais, recibe un parametro correspondiente a la columna y otro al dato que se quiere eliminar
+void actualizarBaseDatosNombreContinente(); // Actualiza el fichero de paises y continentes, ya que cambia el nombre del Continente
+void actualizarBaseDatosTodosDatosPais(); //Funcion cuando el usuario desee cambiar todos los datos de un pais
 void actualizarBaseDatosNombrePaisEnContinentes(string datoOriginal, string datoNuevo); //Funcion para actualizar el continente cuando se modifica el nombre o idioma de un pais
 
 //Funciones para actualizar la poblacion,superficie,Densidad
-void poblacionesTotales(); //Funcion para actualizar las poblaciones,superficies y densidades totales cuando se elimina un país
+void poblacionesTotales(); //Funcion para actualizar las poblaciones,superficies y densidades totales cuando se elimina un pais
 void actualizarBaseDatosPoblacionesTotales(); //Funcion para actualizar las poblaciones,superficies y densidades cuando se elimina un pais o se actualizan todos los dato
 
 bool existeContinente, existePais; //Variables booleanas para comprobar existencia del continente
@@ -72,51 +72,51 @@ string linea, palabra;  // La variable linea va ir leyendo cada fila, la variabl
 
 fstream BaseDatosContinentes;
 fstream BaseDatosPaises;
-fstream auxiliarBaseDatos; //Base de datos Auxiliar para la eliminación de datos
+fstream auxiliarBaseDatos; //Base de datos Auxiliar para la eliminacion de datos
 
 int main()
 {
     verificarExistenciaBaseDatos();
     
     setlocale(LC_CTYPE, "Spanish");
-    cout << "EXPLORADOR DE CONTINENTES.\nEn este programa tendrá la opción de registrar y modificar información sobre continentes y países.\nPara elegir una opción digite el número correspondiente.\n1) Ingresar al programa (oprima 1)\n2) Salir del programa (oprima 2)\nRespuesta: ";
+    cout << "EXPLORADOR DE CONTINENTES.\nEn este programa tendra la opcion de registrar y modificar informacion sobre continentes y paises.\nPara elegir una opcion digite el numero correspondiente.\n1) Ingresar al programa (oprima 1)\n2) Salir del programa (oprima 2)\nRespuesta: ";
     cin >> opcion1;
     while((opcion1 != 1) && (opcion1 != 2)){
         system("clear");
-        cout << "Ingrese una opción válida.\n1) Ingresar al programa (oprima 1)\n2) Salir del programa (oprima 2)\nRespuesta: ";
+        cout << "Ingrese una opcion valida.\n1) Ingresar al programa (oprima 1)\n2) Salir del programa (oprima 2)\nRespuesta: ";
         cin >> opcion1;
     }
     system("clear");
     
-    while(opcion1 == 1){ // ciclo que permite ingresar y volver al menú principal si el usuario así lo elige 
+    while(opcion1 == 1){ // ciclo que permite ingresar y volver al menu principal si el usuario asi lo elige 
         menuPrincipal();
-        cout << "¿Desea volver al menú principal?\n1) Sí\n2) No\nRespuesta: ";
+        cout << "¿Desea volver al menu principal?\n1) Si\n2) No\nRespuesta: ";
         cin >> opcion1;
         while((opcion1 != 1) && (opcion1 != 2)){
             system("clear");
-            cout << "Ingrese una opción válida.\n1) Regresar el menú principal (oprima 1)\n2) Salir del programa (oprima 2)\nRespuesta: ";
+            cout << "Ingrese una opcion valida.\n1) Regresar el menu principal (oprima 1)\n2) Salir del programa (oprima 2)\nRespuesta: ";
             cin >> opcion1;
         }
         system("clear");
     }
 
-    if(opcion1 == 2){ //Mensajes en caso de que el usuario quiera salir del programa o no eliga una opción adecuada
+    if(opcion1 == 2){ //Mensajes en caso de que el usuario quiera salir del programa o no eliga una opcion adecuada
         cout << "Saliendo del Explorador de Continentes..." << endl;
     }  
     return 0;
 }
 
-//   Menú principal
+//   Menu principal
 void menuPrincipal(){ 
     
-    cout << "¿A qué sección desea ingresar?\n1) Sección Continentes\n2) Sección Países\nRespuesta: ";
+    cout << "¿A que seccion desea ingresar?\n1) Seccion Continentes\n2) Seccion Paises\nRespuesta: ";
     cin >> opcion2;
     system("clear");
     
-    if(opcion2 == 1){ // Sección Continentes
+    if(opcion2 == 1){ // Seccion Continentes
         menuContinentes();
     }
-    else if(opcion2 == 2){ // Sección Países
+    else if(opcion2 == 2){ // Seccion Paises
         menuPaises();
     } 
 }
@@ -124,9 +124,9 @@ void menuPrincipal(){
 // Submenus principales
 void menuContinentes(){ // Menu Continentes
     do{
-        cout << "Bienvenido a la Sección de Continentes. Seleccione una de las siguientes opciones:\n1) Registro de nuevos continentes\n2) Modificar información de un continente\n3) Eliminar un continente\n4) Visualizar información de un continente\n5) Salir de la sección continentes\nRespuesta: ";
+        cout << "Bienvenido a la Seccion de Continentes. Seleccione una de las siguientes opciones:\n1) Registro de nuevos continentes\n2) Modificar informacion de un continente\n3) Eliminar un continente\n4) Visualizar informacion de un continente\n5) Salir de la seccion continentes\nRespuesta: ";
         cin >> opcion3;
-        cin.ignore(); // Ignorar el carácter de nueva línea que queda en el buffer de entrada
+        cin.ignore(); // Ignorar el caracter de nueva linea que queda en el buffer de entrada
         system("clear");
                 
         switch(opcion3){
@@ -147,17 +147,17 @@ void menuContinentes(){ // Menu Continentes
                 break;
                 
             case 5:
-                cout << "Saliendo de la sección Continentes.." << endl;
+                cout << "Saliendo de la seccion Continentes.." << endl;
                 opcion6 = 2;
                 break;
                 
             default:
-                cout << "Ninguna opción Seleccionada, saliendo de la Sección Continentes" << endl;
+                cout << "Ninguna opcion Seleccionada, saliendo de la Seccion Continentes" << endl;
                 break;
         }
         
-        if(opcion3 != 5){ // en caso de que ya haya decidido salir de la Sección Continentes esto no se mostrará
-            cout << "Desea volver al menú principal de Continentes:\n1) Sí\n2) No\nRespuesta: ";
+        if(opcion3 != 5){ // en caso de que ya haya decidido salir de la Seccion Continentes esto no se mostrara
+            cout << "Desea volver al menu principal de Continentes:\n1) Si\n2) No\nRespuesta: ";
             cin >> opcion6;
         }
         system("clear");
@@ -166,7 +166,7 @@ void menuContinentes(){ // Menu Continentes
 
 void menuPaises(){ // Menu Paises
     do{ // do para ejecutarlo una vez
-        cout << "Bienvenido a la Sección de Países. Seleccione una de las siguientes opciones:\n1) Registro de nuevos países\n2) Modificar información de un país\n3) Eliminar un país\n4) Visualizar información de un país\n5) Top 5 países más poblados\n6) Salir de la sección países\nRespuesta: ";
+        cout << "Bienvenido a la Seccion de Paises. Seleccione una de las siguientes opciones:\n1) Registro de nuevos paises\n2) Modificar informacion de un pais\n3) Eliminar un pais\n4) Visualizar informacion de un pais\n5) Top 5 paises mas poblados\n6) Salir de la seccion paises\nRespuesta: ";
         cin >> opcion4;
         cin.ignore();
         system("clear");
@@ -193,17 +193,17 @@ void menuPaises(){ // Menu Paises
                 break;
                 
             case 6:
-                cout << "Saliendo de la sección países..." << endl;
+                cout << "Saliendo de la seccion paises..." << endl;
                 opcion7 = 2;
                 break;
                 
             default: 
-                cout << "Ninguna opción seleccionada, saliendo de la sección países..." << endl;
+                cout << "Ninguna opcion seleccionada, saliendo de la seccion paises..." << endl;
                 break;
         } // Fin del switch opcion4
         
         if(opcion4 != 6){
-            cout << "Desea volver al menú principal de países:\n1) Sí\n2) No\nRespuesta: ";
+            cout << "Desea volver al menu principal de paises:\n1) Si\n2) No\nRespuesta: ";
             cin >> opcion7;
         }
     system("clear");   
@@ -222,7 +222,7 @@ void registroContinentes() {
 }
 
 void modificarContinentes(){
-    cout << "Digite el nombre del continente para modificar su información: ";
+    cout << "Digite el nombre del continente para modificar su informacion: ";
     getline(cin, nomConti);
     contiPais = nomConti;
     existenciaContinente(nomConti); // Verifica la existencia del continente, cambia el valor de existeContinente en caso de encontrar el nombre ingresado
@@ -300,7 +300,7 @@ void eliminarContinente(){
             return;
         }
         
-        cout << "El continente ha sido eliminado correctamente de la base de datos de Países" << endl;
+        cout << "El continente ha sido eliminado correctamente de la base de datos de Paises" << endl;
 
     }else{
         cout << "El continente ingresado no existe" << endl;
@@ -308,7 +308,7 @@ void eliminarContinente(){
 }
 
 void visualizarContinente(){
-    cout << "Digite el nombre del continente cuya información desea visualizar: ";
+    cout << "Digite el nombre del continente cuya informacion desea visualizar: ";
     getline(cin, nomConti);
     existenciaContinente(nomConti);
     
@@ -316,47 +316,47 @@ void visualizarContinente(){
         for(int i = 0; i < datosContinentes.size(); i++){
             if(nomConti == datosContinentes[i][0]){
                 cout << "Nombre del Continente: " << datosContinentes[i][0] << endl;
-                cout << "Países que componen el Continente: " << datosContinentes[i][1] << endl;
-                cout << "Población del Continente: " << datosContinentes[i][2] << endl;
+                cout << "Paises que componen el Continente: " << datosContinentes[i][1] << endl;
+                cout << "Poblacion del Continente: " << datosContinentes[i][2] << endl;
                 cout << "Superficie del Continente: " << datosContinentes[i][3] << endl;
                 cout << "Densidad Poblacional del Continente: " << datosContinentes[i][4] << endl;
                 cout << "Idiomas regionales: " << datosContinentes[i][5] << endl;
             }
         }
     }else{
-        cout << "El continente ingresado no existe, dirigase a la sección de registro" << endl;;
+        cout << "El continente ingresado no existe, dirigase a la seccion de registro" << endl;;
     }
 }
 
-// Funciones relativas a países
+// Funciones relativas a paises
 void registroPaises(){
-    cout << "Registro de Países\nPara el registro de nuevos países, por favor ingrese los siguientes datos:" << endl;
-    cout << "Continente al que pertenece el país: ";
+    cout << "Registro de Paises\nPara el registro de nuevos paises, por favor ingrese los siguientes datos:" << endl;
+    cout << "Continente al que pertenece el pais: ";
     getline(cin, contiPais);
     auxiliarContinente = contiPais;
     
     existenciaContinente(contiPais);
     
     if(existeContinente == true){
-        cout << "Continente encontrado, puede proceder con el registro del país" << endl;
-        cout << "Nombre del país: ";
+        cout << "Continente encontrado, puede proceder con el registro del pais" << endl;
+        cout << "Nombre del pais: ";
         getline(cin, nomPais);
-        cout << "Cápital del país: ";
+        cout << "Capital del pais: ";
         getline(cin, cap);
-        cout << "Presidente actual del país: ";
+        cout << "Presidente actual del pais: ";
         getline(cin, pres);
-        cout << "Población actual del país: ";
+        cout << "Poblacion actual del pais: ";
         cin >> pob;
-        cout << "Superficie del país (km^2): ";
+        cout << "Superficie del pais (km^2): ";
         cin >> sup;
         cin.ignore();
-        cout << "Idioma oficial del país: ";
+        cout << "Idioma oficial del pais: ";
         getline(cin, idiom);
         system("clear");
     
         while((pob <= 0) || (sup <= 0)){ // Ciclo while que evita que haya una poblacion, superficie y densidad menor o igual a cero
             if(pob <= 0){
-                cout << "Digite una población mayor a cero: ";
+                cout << "Digite una poblacion mayor a cero: ";
                 cin >> pob;
                 system("clear");
             }
@@ -374,29 +374,29 @@ void registroPaises(){
         BaseDatosPaises.close();
         actualizarBaseDatosTodosDatosContinente();
         
-        cout << "País registrado exitosamente" << endl;
-    }else{ // Mensaje en caso de que el continente no exista aún
-        cout  << "El continente ingresado no existe, dirigase a la sección de registro" << endl;
+        cout << "Pais registrado exitosamente" << endl;
+    }else{ // Mensaje en caso de que el continente no exista aun
+        cout  << "El continente ingresado no existe, dirigase a la seccion de registro" << endl;
     }
 }
 
 void modificarPaises(){ // Modificacion Paises
-    cout << "Digite el nombre del país para modificar su información: ";
+    cout << "Digite el nombre del pais para modificar su informacion: ";
     getline(cin, nomPais);
     system("clear");
     existenciaPais(nomPais);
     auxiliarPais = nomPais;  
     
     if(existePais == true){
-        cout << "El país ingresado existe, puede continuar" << endl;
-        cout << "¿Cuál de los siguientes datos desea modificar?:\n1) Nombre del país\n2) Cápital del país\n3) Presidente actual\n4) Población actual\n5) Superficie del país\n6) Idioma oficial\n7) Todos los datos\nRespuesta: ";
+        cout << "El pais ingresado existe, puede continuar" << endl;
+        cout << "¿Cual de los siguientes datos desea modificar?:\n1) Nombre del pais\n2) Capital del pais\n3) Presidente actual\n4) Poblacion actual\n5) Superficie del pais\n6) Idioma oficial\n7) Todos los datos\nRespuesta: ";
         cin >> opcion5;
         cin.ignore();
         system("clear");
         
         switch(opcion5){
         case 1:
-            cout << "Ingrese el nuevo nombre del país: ";
+            cout << "Ingrese el nuevo nombre del pais: ";
             getline(cin, nomPais);
             numColumnaPais = 1;
             actualizarBaseDatosUnDatoPais(numColumnaPais, nomPais);
@@ -404,7 +404,7 @@ void modificarPaises(){ // Modificacion Paises
             break;
             
         case 2:
-            cout << "Ingrese la nueva cápital del país: ";
+            cout << "Ingrese la nueva capital del pais: ";
             getline(cin, cap);
             numColumnaPais = 2;
             actualizarBaseDatosUnDatoPais(numColumnaPais, cap);
@@ -418,11 +418,11 @@ void modificarPaises(){ // Modificacion Paises
             break;
             
         case 4:
-            cout << "Digite la población actual: ";
+            cout << "Digite la poblacion actual: ";
             cin >> pob;
             numColumnaPais = 4;
             while(pob <= 0){
-                cout << "Digite una población mayor a cero: ";
+                cout << "Digite una poblacion mayor a cero: ";
                 cin >> pob;
                 system("clear");
             }
@@ -451,7 +451,7 @@ void modificarPaises(){ // Modificacion Paises
             
             break;
         case 5:
-            cout << "Digite la superficie(km^2) del país: ";
+            cout << "Digite la superficie(km^2) del pais: ";
             cin >> sup;
             numColumnaPais = 5;
             while(sup <= 0){
@@ -496,7 +496,7 @@ void modificarPaises(){ // Modificacion Paises
                     idiomAntiguo = datosPaises[i][7];
                 }
             }
-            cout << "Digite el nuevo idioma oficial del país: ";
+            cout << "Digite el nuevo idioma oficial del pais: ";
             getline(cin, idiom);
             numColumnaPais = 7;
             actualizarBaseDatosUnDatoPais(numColumnaPais,idiom);
@@ -506,15 +506,15 @@ void modificarPaises(){ // Modificacion Paises
             break;
             
         case 7:
-            cout << "Nombre del país: ";
+            cout << "Nombre del pais: ";
             getline(cin, nomPais);
-            cout << "Cápital del país: ";
+            cout << "Capital del pais: ";
             getline(cin, cap);
-            cout << "Presidente actual del país: ";
+            cout << "Presidente actual del pais: ";
             getline(cin, pres);
-            cout << "Población actual del país: ";
+            cout << "Poblacion actual del pais: ";
             cin >> pob;
-            cout << "Superficie del país (km^2): ";
+            cout << "Superficie del pais (km^2): ";
             cin >> sup;
             cin.ignore();
             for(int i = 0; i < datosPaises.size(); i++){
@@ -522,11 +522,11 @@ void modificarPaises(){ // Modificacion Paises
                     idiomAntiguo = datosPaises[i][7];
                 }
             }
-            cout << "Idioma oficial del país: ";
+            cout << "Idioma oficial del pais: ";
             getline(cin, idiom);
             while((pob <= 0) || (sup <= 0)){ 
                 if(pob <= 0){
-                    cout << "Digite una población mayor a cero: ";
+                    cout << "Digite una poblacion mayor a cero: ";
                     cin >> pob;
                     system("clear");
                 }
@@ -542,7 +542,7 @@ void modificarPaises(){ // Modificacion Paises
             stringSup = to_string(sup);
             stringDens = to_string(dens);
             actualizarBaseDatosTodosDatosPais();  
-            actualizarBaseDatosNombrePaisEnContinentes(auxiliarPais, nomPais); // Actualizar nombre del país
+            actualizarBaseDatosNombrePaisEnContinentes(auxiliarPais, nomPais); // Actualizar nombre del pais
             
             // Actualizar Poblaciones y Superficies Totales 
             llenarVectorPaises();
@@ -557,30 +557,30 @@ void modificarPaises(){ // Modificacion Paises
             break;
 
         default:
-            cout << "Ninguna opción elegida, saliendo de Modificación de países...";
+            cout << "Ninguna opcion elegida, saliendo de Modificacion de paises...";
             break;
         }
         
     }else{
-        cout  << "El país ingresado no existe, dirigase a la sección de registro" << endl;
+        cout  << "El pais ingresado no existe, dirigase a la seccion de registro" << endl;
     }  
 }
 
 void eliminarPais(){ // Eliminar Pais
-    cout << "Digite el nombre del país que desea eliminar: ";
+    cout << "Digite el nombre del pais que desea eliminar: ";
     getline(cin, nomPais);
     system("clear");
     
     llenarVectorPaises();
      for(int i = 0; i < datosPaises.size(); i++){
         if(nomPais == datosPaises[i][1]){
-            contiPais = datosPaises[i][0]; //Buscamos el continente de ese país para saber que poblaciones tomar proximamente
+            contiPais = datosPaises[i][0]; //Buscamos el continente de ese pais para saber que poblaciones tomar proximamente
         }  
     }
 
     existenciaPais(nomPais);
     
-    // Eliminar el País
+    // Eliminar el Pais
     if(existePais == true){
         auxiliarBaseDatos.open("BaseDatosPaises.tmp", ios::out); //Creamos un archivo temporal, donde vamos a guardar la informacion actualizada
         for (vector<string>fila : datosPaises){ // For each -> itera por cada elemento del vector datosContinentes. for (tipo elemento : contenedor) 
@@ -607,7 +607,7 @@ void eliminarPais(){ // Eliminar Pais
             return;
         }
     
-        cout << "El País ha sido eliminado correctamente de la base de datos de países." << endl;
+        cout << "El Pais ha sido eliminado correctamente de la base de datos de paises." << endl;
         
         // Eliminar del continente  
         auxiliarBaseDatos.open("BaseDatosContinentes.tmp", ios::out);
@@ -615,15 +615,15 @@ void eliminarPais(){ // Eliminar Pais
         
         for(int i = 0; i < datosPaises.size(); i++){
             if(nomPais == datosPaises[i][1]){
-                idiomPais = datosPaises[i][7]; //Buscamos el idioma de ese país para eliminarlo tambien
+                idiomPais = datosPaises[i][7]; //Buscamos el idioma de ese pais para eliminarlo tambien
             }  
         }
 
         while (getline(BaseDatosContinentes,palabra)){
-            posPalabra = palabra.find(nomPais);  // Busca la posición de la palabra a eliminar en línea
+            posPalabra = palabra.find(nomPais);  // Busca la posicion de la palabra a eliminar en linea
             
             if (posPalabra != string::npos) { // Si se encuentra la palabra, si la funcion find devuelve string::npos significa que la cadena no se encontra
-                // Elimina la palabra de la línea
+                // Elimina la palabra de la linea
                 if(palabra[posPalabra + nomPais.length()] == ','){ //Verifica si el caracter siguiente a la palabra es igual a una coma
                     if(palabra[posPalabra - 1] != ','){ // Verifica si el caracter antes de la posicion de la palabra a eliminar 
                         palabra.erase(posPalabra - 1, nomPais.length() + 1);
@@ -636,14 +636,14 @@ void eliminarPais(){ // Eliminar Pais
                 
                 posIdiom = palabra.find(idiomPais); // buscamos el idioma
                 if(posIdiom != string::npos){
-                    if(palabra[posIdiom - 1] == ','){ //En caso de que haya una coma antes borramos el país y el espacio que siguiente
+                    if(palabra[posIdiom - 1] == ','){ //En caso de que haya una coma antes borramos el pais y el espacio que siguiente
                         palabra.erase(posIdiom,idiomPais.length() + 1);
                     }else{
                         palabra.erase(posIdiom - 1,idiomPais.length() + 1);
                     }
                 }
             }
-            auxiliarBaseDatos << palabra << endl; // Escribir la línea modificada en el archivo temporal
+            auxiliarBaseDatos << palabra << endl; // Escribir la linea modificada en el archivo temporal
         }
         
         auxiliarBaseDatos.close();
@@ -660,43 +660,43 @@ void eliminarPais(){ // Eliminar Pais
         }
         
         actualizarBaseDatosPoblacionesTotales();
-        cout << "El País ha sido eliminado correctamente de la base de datos de continentes." << endl;
+        cout << "El Pais ha sido eliminado correctamente de la base de datos de continentes." << endl;
     }else{
-        cout << "El país ingresado no existe" << endl;
+        cout << "El pais ingresado no existe" << endl;
     }
 }
 
 void visualizarPais(){
-    cout << "Digite el nombre del país cuya información desea visualizar: ";
+    cout << "Digite el nombre del pais cuya informacion desea visualizar: ";
     getline(cin, nomPais);
     existenciaPais(nomPais);
     
     if(existePais == true){
         for(int i = 0; i < datosPaises.size(); i++){
             if(nomPais == datosPaises[i][1]){
-                cout << "Continente del País: " << datosPaises[i][0] << endl;
-                cout << "Nombre del País: " << datosPaises[i][1] << endl;
-                cout << "Cápital: " << datosPaises[i][2] << endl;
+                cout << "Continente del Pais: " << datosPaises[i][0] << endl;
+                cout << "Nombre del Pais: " << datosPaises[i][1] << endl;
+                cout << "Capital: " << datosPaises[i][2] << endl;
                 cout << "Presidente: " << datosPaises[i][3] << endl;
-                cout << "Población: " << datosPaises[i][4] << endl;
+                cout << "Poblacion: " << datosPaises[i][4] << endl;
                 cout << "Superficie: " << datosPaises[i][5] << endl;
                 cout << "Densidad: " << datosPaises[i][6] << endl;
                 cout << "Idioma: " << datosPaises[i][7] << endl;
             }
         }
     }else{
-        cout << "El país ingresado no existe, dirigase a la sección de registro" << endl;;
+        cout << "El pais ingresado no existe, dirigase a la seccion de registro" << endl;;
     }
 }
 
 
 void topCincoPaises(){
-    cout << "Top 5 países más poblados: " << endl;
+    cout << "Top 5 paises mas poblados: " << endl;
     llenarVectorPaises();
     
     // Llenamos el vector de poblaciones mayores con todos las poblaciones del fichero
-    for (int i = 1; i < datosPaises.size(); i++){ //Debemos inicializarlo en 1, ya que la fila 0 corresponde al nombre de las columnas, lo que ocasionaría problemas en la conversion 
-        long int poblacionMayor = stol(datosPaises[i][4]); // Convierte la cadena de la columna de población a long int, ya que el vector datosPaises es de tipo string
+    for (int i = 1; i < datosPaises.size(); i++){ //Debemos inicializarlo en 1, ya que la fila 0 corresponde al nombre de las columnas, lo que ocasionaria problemas en la conversion 
+        long int poblacionMayor = stol(datosPaises[i][4]); // Convierte la cadena de la columna de poblacion a long int, ya que el vector datosPaises es de tipo string
         poblacionesMayores.push_back(poblacionMayor);
         paisesMayores.push_back(datosPaises[i][1]);
     }   
@@ -704,21 +704,21 @@ void topCincoPaises(){
     // Ordenamos el vector de poblaciones mayores
     for(int i = 0; i < paisesMayores.size(); i++){
         mayor = i; // mayor es la posicion actual
-        for(int j = i + 1; j < paisesMayores.size(); j++){ // Recorremos los países desde la posición actual + 1
-            if(poblacionesMayores[j] > poblacionesMayores[mayor]){ // Si la posición actual + 1 es mayor que la posición actual
+        for(int j = i + 1; j < paisesMayores.size(); j++){ // Recorremos los paises desde la posicion actual + 1
+            if(poblacionesMayores[j] > poblacionesMayores[mayor]){ // Si la posicion actual + 1 es mayor que la posicion actual
                 mayor = j; // mayor pasa a ser la posicion actual + 1
             }
         }    
-        aux = poblacionesMayores[i]; // Valor de la posición actual
+        aux = poblacionesMayores[i]; // Valor de la posicion actual
         aux2 = paisesMayores[i];
-        poblacionesMayores[i] = poblacionesMayores[mayor]; // Reemplazamos la posición actual por el mayor Valor
+        poblacionesMayores[i] = poblacionesMayores[mayor]; // Reemplazamos la posicion actual por el mayor Valor
         paisesMayores[i] = paisesMayores[mayor]; 
-        poblacionesMayores[mayor] = aux; // Reemplazamos la posicion mayor por el valor que había en la posición actual, es decir aux
+        poblacionesMayores[mayor] = aux; // Reemplazamos la posicion mayor por el valor que habia en la posicion actual, es decir aux
         paisesMayores[mayor] = aux2;
     }
     
     //Imprimimos los cinco primeros elementos:
-    if (paisesMayores.size() >= 5 && poblacionesMayores.size() >= 5) { //Verificamos que haya por lo menos cinco elementos en el vector, ya que así evitamos errores
+    if (paisesMayores.size() >= 5 && poblacionesMayores.size() >= 5) { //Verificamos que haya por lo menos cinco elementos en el vector, ya que asi evitamos errores
         for(int i = 0; i < 5; i++){
             cout << "Top " << i + 1 << ": " << paisesMayores[i] << " -> " << poblacionesMayores[i] << " habitantes"<<  endl;
         } 
@@ -731,7 +731,7 @@ void topCincoPaises(){
 // Base de datos
 
 void llenarVectorContinentes(){ // Funcion para llenar el vector de continentes con todas las filas del fichero
-    datosContinentes.clear(); // Es necesario limpiar el continenido del vector, puesto que puede contener información vieja
+    datosContinentes.clear(); // Es necesario limpiar el continenido del vector, puesto que puede contener informacion vieja
     
     // Recorremos cada palabra y la guardamos en el vector datosContinentes
     BaseDatosContinentes.open("BaseDatosContinentes", ios::in);
@@ -802,19 +802,19 @@ void existenciaPais(string nomDelPais){ //Verifica si existe el con
     for(int i = 0; i < datosPaises.size(); i++){  //verifica si existe el pais
         if(nomDelPais == datosPaises[i][1]){
             existePais = true;
-            break; //Salir del ciclo si se encuentra con el país
+            break; //Salir del ciclo si se encuentra con el pais
         }else{
             existePais = false;
         }
     }
 }
 
-void actualizarBaseDatosNombreContinente(){ // Actualiza el fichero de países y continentes, ya que cambia el nombre del Continente
+void actualizarBaseDatosNombreContinente(){ // Actualiza el fichero de paises y continentes, ya que cambia el nombre del Continente
     llenarVectorContinentes();
     
     // Buscamos el continente que queria cambiar el usuario y lo cambiamos por el nuevo nombre
     for(int i = 0; i < datosContinentes.size(); i++){
-        if(datosContinentes[i][0] == contiPais){ // Evaluamos de acuerdo a la primera columna del vector, ya que allí se ubica el nombre del continentes
+        if(datosContinentes[i][0] == contiPais){ // Evaluamos de acuerdo a la primera columna del vector, ya que alli se ubica el nombre del continentes
             datosContinentes[i][0] = nomConti;
         }
     }
@@ -858,10 +858,10 @@ void actualizarBaseDatosNombreContinente(){ // Actualiza el fichero de países y
     BaseDatosPaises.close();
 }
 
-void actualizarBaseDatosUnDatoPais(int columna, string datoPais){ // Funcion para actualizar un solo dato del país, recibe un parametro correspondiente a la columna y otro al dato que se quiere eliminar
+void actualizarBaseDatosUnDatoPais(int columna, string datoPais){ // Funcion para actualizar un solo dato del pais, recibe un parametro correspondiente a la columna y otro al dato que se quiere eliminar
     llenarVectorPaises();
     
-    for(int i = 0; i < datosPaises.size(); i++){ // Se recorre el vector países para buscar el dato a cambiar 
+    for(int i = 0; i < datosPaises.size(); i++){ // Se recorre el vector paises para buscar el dato a cambiar 
         for(int j = 0; j < datosPaises[i].size(); j++){
             if(auxiliarPais == datosPaises[i][j]){
                 datosPaises[i][columna] = datoPais;
@@ -869,7 +869,7 @@ void actualizarBaseDatosUnDatoPais(int columna, string datoPais){ // Funcion par
         }
     }
     
-    //Se reemplaza la información del fichero con los nuevos datos
+    //Se reemplaza la informacion del fichero con los nuevos datos
     BaseDatosPaises.open("BaseDatosPaises", ios::out);
     for(int i = 0; i < datosPaises.size(); i++){
         for(int j = 0; j < datosPaises[i].size(); j++){
@@ -885,7 +885,7 @@ void actualizarBaseDatosUnDatoPais(int columna, string datoPais){ // Funcion par
     BaseDatosPaises.close();
 }
 
-void actualizarBaseDatosTodosDatosPais(){ //Funcion cuando el usuario desee cambiar todos los datos de un país
+void actualizarBaseDatosTodosDatosPais(){ //Funcion cuando el usuario desee cambiar todos los datos de un pais
     llenarVectorPaises();
     
     for(int i = 0; i < datosPaises.size(); i++){
@@ -917,7 +917,7 @@ void actualizarBaseDatosTodosDatosPais(){ //Funcion cuando el usuario desee camb
     BaseDatosPaises.close();
 }
 
-void actualizarBaseDatosTodosDatosContinente(){ //Función para actualizar los datos de un continente una vez se registra un país dentro de dicho continente
+void actualizarBaseDatosTodosDatosContinente(){ //Funcion para actualizar los datos de un continente una vez se registra un pais dentro de dicho continente
     llenarVectorContinentes();
     
     for(int i = 0; i < datosContinentes.size(); i++){
@@ -927,11 +927,11 @@ void actualizarBaseDatosTodosDatosContinente(){ //Función para actualizar los d
                 datosContinentes[i][3] = stringSupTotal;
                 datosContinentes[i][4] = stringDensTotal;
                 
-                if((datosContinentes[i][1] == "n") || (datosContinentes[i][5] == "n")){ //En caso de que la columna de paises o idiomas tenga n(es decir no haya ningun dato aun), entonces se reemplaza la información
+                if((datosContinentes[i][1] == "n") || (datosContinentes[i][5] == "n")){ //En caso de que la columna de paises o idiomas tenga n(es decir no haya ningun dato aun), entonces se reemplaza la informacion
                     datosContinentes[i][1] = nomPais;
                     datosContinentes[i][5] = idiom;
                 }else{
-                    datosContinentes[i][1] = datosContinentes[i][1] + " " + nomPais; //En este caso, ya hay algo registrado, por lo que se agrega un espacio y el siguiente país o idioma
+                    datosContinentes[i][1] = datosContinentes[i][1] + " " + nomPais; //En este caso, ya hay algo registrado, por lo que se agrega un espacio y el siguiente pais o idioma
                     datosContinentes[i][5] = datosContinentes[i][5] + " " + idiom;
                 }
             }
@@ -954,14 +954,14 @@ void actualizarBaseDatosTodosDatosContinente(){ //Función para actualizar los d
     BaseDatosContinentes.close();
 }
 
-void poblacionesTotales(){ // Funcion para saber la población total de un Continente 
+void poblacionesTotales(){ // Funcion para saber la poblacion total de un Continente 
     llenarVectorPaises();
     
     pobTotal = 0; //Las varaibles se inicializan en cero, ya que cada continente tiene una poblacion y superfie distinta
     supTotal = 0;
     int k = 0;
     
-    for(int i = 1; i < datosPaises.size(); i++){ //Recorremos las filas del vector países; se inicializa en 1 ya que 0 tomaria en cuenta la fila de los nombres de las columnas
+    for(int i = 1; i < datosPaises.size(); i++){ //Recorremos las filas del vector paises; se inicializa en 1 ya que 0 tomaria en cuenta la fila de los nombres de las columnas
         if(contiPais == datosPaises[i][0]){ //Verificamos donde esta el continente
             k++;
             if(k == 1){ //Si la fila donde se encuentra el continente es la primera(es decir estamos en la prime iteracion del bucle)
@@ -989,7 +989,7 @@ void actualizarBaseDatosPoblacionesTotales(){ //Funcion para actualizar las pobl
     pobTotal = 0; //Las varaibles se inicializan en cero, ya que cada continente tiene una poblacion y superfie distinta
     supTotal = 0;
     
-    for(int i = 1; i < datosPaises.size(); i++){ //Recorremos las filas del vector países; se inicializa en 1 ya que 0 tomaria en cuenta la fila de los nombres de las columnas
+    for(int i = 1; i < datosPaises.size(); i++){ //Recorremos las filas del vector paises; se inicializa en 1 ya que 0 tomaria en cuenta la fila de los nombres de las columnas
         if(contiPais == datosPaises[i][0]){ //Verificamos donde esta el continente
             pobTotal = pobTotal + stol(datosPaises[i][4]); // Tomamos el valor de pobTotal y solo le sumamos el valor de la poblacion de dicha fila(pais)
             supTotal = supTotal + stol(datosPaises[i][5]);
@@ -1053,5 +1053,5 @@ void actualizarBaseDatosNombrePaisEnContinentes(string datoOriginal, string dato
         return;
     }
         
-    cout << "El País ha sido modificado correctamente de la base de datos de continentes." << endl;
+    cout << "El Pais ha sido modificado correctamente de la base de datos de continentes." << endl;
 }
