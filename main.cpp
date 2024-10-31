@@ -82,22 +82,22 @@ int main()
     cout << "EXPLORADOR DE CONTINENTES.\nEn este programa tendra la opcion de registrar y modificar informacion sobre continentes y paises.\nPara elegir una opcion digite el numero correspondiente.\n1) Ingresar al programa (oprima 1)\n2) Salir del programa (oprima 2)\nRespuesta: ";
     cin >> opcion1;
     while((opcion1 != 1) && (opcion1 != 2)){
-        system("clear");
+        system("cls");
         cout << "Ingrese una opcion valida.\n1) Ingresar al programa (oprima 1)\n2) Salir del programa (oprima 2)\nRespuesta: ";
         cin >> opcion1;
     }
-    system("clear");
+    system("cls");
     
     while(opcion1 == 1){ // ciclo que permite ingresar y volver al menu principal si el usuario asi lo elige 
         menuPrincipal();
         cout << "¿Desea volver al menu principal?\n1) Si\n2) No\nRespuesta: ";
         cin >> opcion1;
         while((opcion1 != 1) && (opcion1 != 2)){
-            system("clear");
+            system("cls");
             cout << "Ingrese una opcion valida.\n1) Regresar el menu principal (oprima 1)\n2) Salir del programa (oprima 2)\nRespuesta: ";
             cin >> opcion1;
         }
-        system("clear");
+        system("cls");
     }
 
     if(opcion1 == 2){ //Mensajes en caso de que el usuario quiera salir del programa o no eliga una opcion adecuada
@@ -111,7 +111,7 @@ void menuPrincipal(){
     
     cout << "¿A que seccion desea ingresar?\n1) Seccion Continentes\n2) Seccion Paises\nRespuesta: ";
     cin >> opcion2;
-    system("clear");
+    system("cls");
     
     if(opcion2 == 1){ // Seccion Continentes
         menuContinentes();
@@ -127,7 +127,7 @@ void menuContinentes(){ // Menu Continentes
         cout << "Bienvenido a la Seccion de Continentes. Seleccione una de las siguientes opciones:\n1) Registro de nuevos continentes\n2) Modificar informacion de un continente\n3) Eliminar un continente\n4) Visualizar informacion de un continente\n5) Salir de la seccion continentes\nRespuesta: ";
         cin >> opcion3;
         cin.ignore(); // Ignorar el caracter de nueva linea que queda en el buffer de entrada
-        system("clear");
+        system("cls");
                 
         switch(opcion3){
             case 1:
@@ -160,7 +160,7 @@ void menuContinentes(){ // Menu Continentes
             cout << "Desea volver al menu principal de Continentes:\n1) Si\n2) No\nRespuesta: ";
             cin >> opcion6;
         }
-        system("clear");
+        system("cls");
     }while(opcion6 == 1);
 }
 
@@ -169,7 +169,7 @@ void menuPaises(){ // Menu Paises
         cout << "Bienvenido a la Seccion de Paises. Seleccione una de las siguientes opciones:\n1) Registro de nuevos paises\n2) Modificar informacion de un pais\n3) Eliminar un pais\n4) Visualizar informacion de un pais\n5) Top 5 paises mas poblados\n6) Salir de la seccion paises\nRespuesta: ";
         cin >> opcion4;
         cin.ignore();
-        system("clear");
+        system("cls");
         
         switch(opcion4){
             case 1:
@@ -206,7 +206,7 @@ void menuPaises(){ // Menu Paises
             cout << "Desea volver al menu principal de paises:\n1) Si\n2) No\nRespuesta: ";
             cin >> opcion7;
         }
-    system("clear");   
+    system("cls");   
     }while(opcion7 == 1);
 }
 
@@ -352,18 +352,18 @@ void registroPaises(){
         cin.ignore();
         cout << "Idioma oficial del pais: ";
         getline(cin, idiom);
-        system("clear");
+        system("cls");
     
         while((pob <= 0) || (sup <= 0)){ // Ciclo while que evita que haya una poblacion, superficie y densidad menor o igual a cero
             if(pob <= 0){
                 cout << "Digite una poblacion mayor a cero: ";
                 cin >> pob;
-                system("clear");
+                system("cls");
             }
             if(sup <= 0){
                 cout << "Digite una superficie (km^2) mayor a cero: ";
                 cin >> sup;
-                system("clear");
+                system("cls");
             }
         }
         dens = float(pob)/sup;
@@ -383,7 +383,7 @@ void registroPaises(){
 void modificarPaises(){ // Modificacion Paises
     cout << "Digite el nombre del pais para modificar su informacion: ";
     getline(cin, nomPais);
-    system("clear");
+    system("cls");
     existenciaPais(nomPais);
     auxiliarPais = nomPais;  
     
@@ -392,7 +392,7 @@ void modificarPaises(){ // Modificacion Paises
         cout << "¿Cual de los siguientes datos desea modificar?:\n1) Nombre del pais\n2) Capital del pais\n3) Presidente actual\n4) Poblacion actual\n5) Superficie del pais\n6) Idioma oficial\n7) Todos los datos\nRespuesta: ";
         cin >> opcion5;
         cin.ignore();
-        system("clear");
+        system("cls");
         
         switch(opcion5){
         case 1:
@@ -424,7 +424,7 @@ void modificarPaises(){ // Modificacion Paises
             while(pob <= 0){
                 cout << "Digite una poblacion mayor a cero: ";
                 cin >> pob;
-                system("clear");
+                system("cls");
             }
             
             for(int i = 0; i < datosPaises.size(); i++){
@@ -457,7 +457,7 @@ void modificarPaises(){ // Modificacion Paises
             while(sup <= 0){
                 cout << "Digite una superficie(km^2) mayor a cero: ";
                 cin >> sup;
-                system("clear");
+                system("cls");
             }
             
             for(int i = 0; i < datosPaises.size(); i++){
@@ -528,12 +528,12 @@ void modificarPaises(){ // Modificacion Paises
                 if(pob <= 0){
                     cout << "Digite una poblacion mayor a cero: ";
                     cin >> pob;
-                    system("clear");
+                    system("cls");
                 }
                 if(sup <= 0){
                     cout << "Digite una superficie (km^2) mayor a cero: ";
                     cin >> sup;
-                    system("clear");
+                    system("cls");
                 }
             }
             dens = float(pob)/sup;
@@ -569,7 +569,7 @@ void modificarPaises(){ // Modificacion Paises
 void eliminarPais(){ // Eliminar Pais
     cout << "Digite el nombre del pais que desea eliminar: ";
     getline(cin, nomPais);
-    system("clear");
+    system("cls");
     
     llenarVectorPaises();
      for(int i = 0; i < datosPaises.size(); i++){
